@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pink Panther Love 💗</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Itim&family=Mitr:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --pink:#ff6fa3;
+    --dark:#2a0d1f;
+}
+
+/* พื้นหลัง Pink Panther */
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Itim', cursive;
+    background:linear-gradient(135deg,#ffd6e7,#ff9fc5,#ffd6e7);
+    overflow:auto;
+}
+
+/* กล่องหลัก */
+.glass-card{
+    background:rgba(255,255,255,.92);
+    border-radius:30px;
+    padding:40px;
+    width:520px;
+    max-width:90%;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(255,105,180,.25);
+    border:3px solid #ffb3d1;
+}
+
+/* หัวข้อ */
+h1{
+    color:var(--pink);
+    font-family:'Mitr',sans-serif;
+    text-shadow:0 0 12px #ffb3d1;
+}
+
+/* รูป */
+.photo-row{
+    display:flex;
+    gap:12px;
+    margin:20px 0;
+}
+.photo-row img{
+    width:50%;
+    height:200px;
+    border-radius:18px;
+    object-fit:cover;
+    border:3px solid #ffc4dd;
+}
+
+/* slider */
+.vertical-slider{
+    height:220px;
+    overflow:hidden;
+    border-radius:18px;
+    margin:20px 0;
+    border:3px solid #ffc4dd;
+}
+.slide-track{
+    display:flex;
+    flex-direction:column;
+    animation:slideUp 8s infinite;
+}
+.slide-track img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+@keyframes slideUp{
+    0%,40%{ transform:translateY(0); }
+    50%,90%{ transform:translateY(-220px); }
+    100%{ transform:translateY(0); }
+}
+
+/* essay */
+.essay{
+    text-align:left;
+    background:#ffeaf3;
+    padding:18px;
+    border-radius:18px;
+    line-height:1.7;
+    margin:20px 0;
+}
+
+/* video */
+.video-box video{
+    width:100%;
+    max-height:280px;
+    object-fit:cover;
+    border-radius:18px;
+    border:3px solid #ffc4dd;
+}
+
+/* typing */
+#typing{
+    font-size:1.4rem;
+    color:#444;
+    height:1.6em;
+    margin-bottom:15px;
+}
+
+/* ปุ่ม */
+.btn-group{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    align-items:center;
+}
+button{
+    width:80%;
+    padding:12px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(90deg,#ff8fb8,#ff6fa3);
+    color:#fff;
+    font-size:1.1rem;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 5px 20px rgba(255,105,180,.4);
+}
+
+.btn-secondary{
+    background:white;
+    color:var(--pink);
+    border:2px solid var(--pink);
+}
+
+/* หัวใจลอย */
+.heart{
+    position:fixed;
+    bottom:-50px;
+    font-size:24px;
+    pointer-events:none;
+    animation:floatUp 6s ease forwards;
+}
+
+@keyframes floatUp{
+    0%{transform:translateY(0);opacity:1;}
+    100%{transform:translateY(-110vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="glass-card">
+<h1>💗 ถึงคนพิเศษ 💗</h1>
+<div id="typing"></div>
+
+<div class="photo-row">
+<img src="do3.jpg">
+<img src="do4.jpg">
+</div>
+
+<div class="vertical-slider">
+<div class="slide-track">
+<img src="do1.jpg">
+<img src="do7.jpg">
+</div>
+</div>
+
+<div class="essay">
+ถ้าโลกนี้เป็นเกม… ผมคงโกงไม่ได้ แต่ดันโชคดีได้เธอมาเป็นแฟนเฉยเลย  
+<strong>นางสาวภิสรินธัณญ์ ทองล้วน</strong> หรือที่คนส่วนใหญ่เรียกว่า ใบเฟิร์น หรือ วาเลน  
+ส่วนผมเรียกว่า “ความสุขแบบรายวัน แต่บางวันก็มีงอนแถมฟรี” 😂<br><br>
+
+ตั้งแต่มีเธอเข้ามา ชีวิตผมเปลี่ยนไปหลายอย่าง เช่น<br>
+จากคนประหยัด → กลายเป็นคนรูดพร้อมเพย์เก่งขึ้น<br>
+จากคนเงียบ ๆ → กลายเป็นคนคุยเก่ง (โดยเฉพาะเวลาง้อ)<br>
+จากคนปกติ → กลายเป็นคนคลั่งรักแบบไม่รู้ตัว<br><br>
+
+เธอเป็นคนที่แปลกดีนะ  
+บางวันน่ารักจนอยากอวดทั้งโลก  
+บางวันงอนจนผมต้องอัปสกิลง้อแบบเร่งด่วน  
+แต่สุดท้าย…ก็ยังเป็นคนที่ผมอยากอยู่ด้วยที่สุดอยู่ดี ❤️
+</div>
+
+<div class="video-box">
+<video controls>
+<source src="5do.mp4" type="video/mp4">
+</video>
+</div>
+
+<div class="btn-group">
+<button onclick="surprise()">กดเพื่อดูความลับ 🎁</button>
+<button class="btn-secondary" onclick="toggleMusic()">🎵 เปิด/ปิด เพลงรัก</button>
+<button onclick="goNext()">เกมตอบคำถามของโดโด้ 💕</button>
+</div>
+</div>
+
+<audio id="music" loop>
+<source src="ฉันรักเธอ.mp3" type="audio/mp3">
+</audio>
+
+<script>
+const text="เค้ารักเธอมากนะ อยู่ด้วยกันไปนานๆ ❤️";
+let i=0;
+
+function typingEffect(){
+    if(i<text.length){
+        document.getElementById("typing").innerHTML+=text.charAt(i);
+        i++;
+        setTimeout(typingEffect,100);
+    }
+}
+window.onload=typingEffect;
+
+function surprise(){
+    window.location.href="dodo3.html";
+}
+
+const music=document.getElementById("music");
+function toggleMusic(){
+    music.paused ? music.play() : music.pause();
+}
+
+function goNext(){
+    window.location.href="dodo2.html";
+}
+
+function createHeart(){
+    const heart=document.createElement("div");
+    const icons=["💗","💕","🌸","💖"];
+    heart.className="heart";
+    heart.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=Math.random()*20+20+"px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHeart,800);
+</script>
+
+</body>
+</html>

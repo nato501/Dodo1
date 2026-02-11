@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wizard Cute Slot ✨</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Georgia,serif;
+    background:
+    radial-gradient(circle at 20% 20%,#2d1b4e,#000);
+    color:#ffd700;
+    overflow:hidden;
+}
+
+/* ดาวพื้นหลัง */
+body::before{
+    content:"✨ ⭐ ✨ ⭐ ✨ ⭐ ✨ ⭐";
+    position:absolute;
+    width:200%;
+    height:200%;
+    animation:stars 20s linear infinite;
+    opacity:.15;
+    font-size:40px;
+}
+
+@keyframes stars{
+    from{ transform:translateY(0);}
+    to{ transform:translateY(-500px);}
+}
+
+/* กล่องหลัก */
+.box{
+    background:rgba(0,0,0,.6);
+    padding:40px;
+    border-radius:30px;
+    text-align:center;
+    box-shadow:0 0 50px rgba(255,215,0,.4);
+    width:430px;
+    backdrop-filter:blur(5px);
+}
+
+h1{
+    color:#ffd700;
+    text-shadow:0 0 20px gold;
+}
+
+/* สล็อต */
+.slot{
+    display:flex;
+    justify-content:center;
+    margin:30px 0;
+}
+
+.reel{
+    width:90px;
+    height:90px;
+    background:#1a1a2e;
+    border:2px solid gold;
+    border-radius:20px;
+    margin:0 10px;
+    font-size:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:
+        0 0 15px rgba(255,215,0,.5),
+        inset 0 0 15px rgba(255,215,0,.3);
+    transition:.3s;
+}
+
+/* เอฟเฟกต์หมุน */
+.reel.spin{
+    animation:wizardSpin .25s linear infinite;
+}
+
+@keyframes wizardSpin{
+    0%{ transform:translateY(-20px) scale(.95); filter:blur(2px);}
+    50%{ transform:translateY(20px) scale(1.05); filter:blur(4px);}
+    100%{ transform:translateY(-20px) scale(.95); filter:blur(2px);}
+}
+
+/* ปุ่ม */
+button{
+    padding:15px 40px;
+    font-size:18px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(45deg,gold,#fff2a6);
+    color:#000;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:bold;
+}
+
+button:hover{
+    box-shadow:0 0 25px gold;
+    transform:scale(1.08);
+}
+
+/* ผลลัพธ์ */
+.result{
+    margin-top:20px;
+    font-size:22px;
+    color:#ffd700;
+    font-weight:bold;
+    text-shadow:0 0 10px gold;
+}
+
+/* ปุ่มกลับ */
+.backBtn{
+    position:fixed;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%);
+    background:linear-gradient(45deg,gold,#fff2a6);
+    color:black;
+    padding:12px 35px;
+    border-radius:40px;
+    text-decoration:none;
+    font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h1>🪄 Wizard Cute Slot ✨</h1>
+
+<div class="slot">
+<div class="reel" id="r1">⚡</div>
+<div class="reel" id="r2">🦉</div>
+<div class="reel" id="r3">✨</div>
+</div>
+
+<button onclick="spin()">ร่ายคาถาเลย 🪄</button>
+<div class="result" id="result"></div>
+</div>
+
+<a href="dodo1.html" class="backBtn">← 🦤</a>
+
+<script>
+const items=["⚡","🦉","🧙‍♀️","📜","✨","🪄","🐍","🦁","🍫"];
+
+function spin(){
+
+    const r1=document.getElementById("r1");
+    const r2=document.getElementById("r2");
+    const r3=document.getElementById("r3");
+    const result=document.getElementById("result");
+
+    result.innerHTML="✨ กำลังร่ายคาถา...";
+
+    r1.classList.add("spin");
+    r2.classList.add("spin");
+    r3.classList.add("spin");
+
+    let count=0;
+
+    const rolling=setInterval(()=>{
+        r1.innerHTML=items[Math.floor(Math.random()*items.length)];
+        r2.innerHTML=items[Math.floor(Math.random()*items.length)];
+        r3.innerHTML=items[Math.floor(Math.random()*items.length)];
+
+        count++;
+
+        if(count>20){
+            clearInterval(rolling);
+
+            r1.classList.remove("spin");
+            r2.classList.remove("spin");
+            r3.classList.remove("spin");
+
+            if(r1.innerHTML===r2.innerHTML && r2.innerHTML===r3.innerHTML){
+                result.innerHTML="✨ JACKPOT! เวทมนตร์แห่งความรัก 💛";
+            }else{
+                result.innerHTML="ลองใหม่อีกทีนะ 😆";
+            }
+        }
+
+    },100);
+}
+</script>
+
+</body>
+</html>

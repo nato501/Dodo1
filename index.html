@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ล็อกรหัสหัวใจ</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Prompt', sans-serif;
+    background:linear-gradient(135deg,#ffc0cb,#ff9fb2,#ffd6e0);
+    background-size:300% 300%;
+    animation:bgMove 10s infinite alternate;
+}
+
+@keyframes bgMove{
+    0%{background-position:left}
+    100%{background-position:right}
+}
+
+.container{
+    display:flex;
+    gap:40px;
+    align-items:center;
+    background:rgba(255,255,255,.2);
+    backdrop-filter:blur(18px);
+    padding:45px 65px;
+    border-radius:35px;
+    box-shadow:0 25px 60px rgba(0,0,0,0.25);
+    position:relative;
+}
+
+.container::before{
+    content:"💖";
+    position:absolute;
+    font-size:70px;
+    top:-35px;
+    right:-20px;
+    opacity:.6;
+}
+
+.photo,.keypad{position:relative;z-index:1;}
+
+.photo{
+    width:200px;
+    height:260px;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 15px 30px rgba(0,0,0,0.35);
+    transition:.3s;
+}
+
+.photo:hover{transform:scale(1.05)}
+.photo img{width:100%;height:100%;object-fit:cover;}
+
+.keypad{text-align:center;}
+
+.title{
+    color:white;
+    font-size:20px;
+    margin-bottom:10px;
+    text-shadow:0 2px 5px rgba(0,0,0,.3);
+}
+
+.pass-display{
+    height:48px;
+    margin-bottom:20px;
+    background:#f48fb1;
+    border-radius:25px;
+    line-height:48px;
+    letter-spacing:8px;
+    font-size:26px;
+    color:white;
+    box-shadow:inset 0 4px 8px rgba(0,0,0,0.25);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,70px);
+    gap:18px;
+    justify-content:center;
+}
+
+.num{
+    background:#ff8fab;
+    color:white;
+    font-size:22px;
+    padding:18px;
+    border-radius:20px;
+    cursor:pointer;
+    user-select:none;
+    transition:.25s;
+    box-shadow:0 8px 18px rgba(0,0,0,.25);
+}
+
+.num:hover{
+    background:#ff6f91;
+    transform:translateY(-3px) scale(1.05);
+}
+
+.enter-btn{
+    margin-top:20px;
+    background:linear-gradient(45deg,#ff6f91,#ff9fb2);
+    padding:13px 35px;
+    border-radius:25px;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+    box-shadow:0 10px 20px rgba(0,0,0,.3);
+    transition:.3s;
+}
+
+.enter-btn:hover{transform:scale(1.07);}
+
+.delete-btn{
+    margin-top:12px;
+    background:#ffc2d1;
+    padding:8px 28px;
+    border-radius:20px;
+    color:white;
+    cursor:pointer;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="photo">
+<img src="oo.png">
+</div>
+
+<div class="keypad">
+<div class="title">🔒 ใส่รหัสวันสำคัญ</div>
+<div class="pass-display" id="display"></div>
+
+<div class="grid">
+<div class="num" onclick="press(1)">1</div>
+<div class="num" onclick="press(2)">2</div>
+<div class="num" onclick="press(3)">3</div>
+<div class="num" onclick="press(4)">4</div>
+<div class="num" onclick="press(5)">5</div>
+<div class="num" onclick="press(6)">6</div>
+<div class="num" onclick="press(7)">7</div>
+<div class="num" onclick="press(8)">8</div>
+<div class="num" onclick="press(9)">9</div>
+<div></div>
+<div class="num" onclick="press(0)">0</div>
+<div></div>
+</div>
+
+<div class="delete-btn" onclick="del()">ลบ ←</div>
+<div class="enter-btn" onclick="checkPass()">open the door♥</div>
+</div>
+</div>
+
+<script>
+let input="";
+const password="0601";
+
+function press(n){
+    if(input.length>=4) return;
+    input+=n;
+    document.getElementById('display').innerHTML="●".repeat(input.length);
+}
+
+function del(){
+    input=input.slice(0,-1);
+    document.getElementById('display').innerHTML="●".repeat(input.length);
+}
+
+function checkPass(){
+    if(input===password){
+        window.location.href="dodo1.html"; // ไปหน้าถัดไปทันที
+    }else{
+        alert("รหัสผิด");
+        input="";
+        document.getElementById('display').innerHTML="";
+    }
+}
+</script>
+
+</body>
+</html>

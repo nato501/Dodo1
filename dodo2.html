@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pink Panther Love Quiz 💖</title>
+
+<style>
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Trebuchet MS',Tahoma;
+    background:
+    radial-gradient(circle at top,#ffb6d9,#ff69b4 60%,#2b0018);
+    color:#fff;
+}
+
+/* กล่องหลัก */
+.box{
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(10px);
+    padding:45px;
+    border-radius:30px;
+    width:500px;
+    text-align:center;
+    box-shadow:
+        0 0 40px rgba(255,105,180,.6),
+        inset 0 0 20px rgba(255,255,255,.2);
+}
+
+h1{
+    color:#ffd6ec;
+    text-shadow:0 0 10px hotpink;
+}
+
+/* ปุ่ม */
+button{
+    padding:15px 35px;
+    margin:10px;
+    font-size:18px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:bold;
+}
+
+#loveBtn{
+    background:hotpink;
+    color:white;
+}
+#loveBtn:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 20px hotpink;
+}
+
+#noBtn{ background:#eee; }
+
+label{
+    display:block;
+    margin:10px 0;
+    font-size:18px;
+}
+
+.check{
+    font-size:26px;
+    color:#fff;
+    margin-top:15px;
+    text-shadow:0 0 10px hotpink;
+}
+
+/* popup */
+.retry{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:hotpink;
+    color:white;
+    padding:30px 60px;
+    border-radius:25px;
+    font-size:45px;
+    font-weight:bold;
+    display:none;
+}
+
+.dodo{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:750px;
+    display:none;
+}
+
+.middleFinger{
+    position:fixed;
+    font-size:160px;
+    pointer-events:none;
+}
+
+/* ตอนจบ */
+.scrollUp{
+    animation:scrollUp 20s linear forwards;
+}
+@keyframes scrollUp{
+    from{ top:100px; }
+    to{ top:-800px; }
+}
+
+#finalBox{
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:#000c;
+    color:white;
+    text-align:center;
+    padding-top:80px;
+    overflow:hidden;
+    z-index:9999;
+}
+
+.backBtn{
+    position:fixed;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%);
+    background:hotpink;
+    color:white;
+    padding:15px 40px;
+    border-radius:50px;
+    text-decoration:none;
+    font-size:20px;
+    font-weight:bold;
+    box-shadow:0 5px 20px rgba(0,0,0,.4);
+}
+.backBtn:hover{
+    transform:translateX(-50%) scale(1.08);
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<div id="q1">
+<h1>💖 เฟิร์นรักเค้าไหม 💖</h1>
+<button id="loveBtn">รัก</button>
+<button id="noBtn">ไม่รัก</button>
+<div id="result"></div>
+</div>
+
+<div id="q2" style="display:none;">
+<h1>รักเค้าแค่ไหน 💕</h1>
+<label><input type="radio" name="love" value="1"> รักเท่าไก่ย่าง</label>
+<label><input type="radio" name="love" value="2"> รักเท่าม้าโพนี่</label>
+<label><input type="radio" name="love" value="3"> รักเท่าไดโนเสาร์</label>
+<label><input type="radio" name="love" value="4"> รักที่สุดในจักรวาล</label>
+<button onclick="checkQ2()">ตอบ</button>
+<div id="ans2"></div>
+</div>
+
+<div id="q3" style="display:none;">
+<h1>เค้ารักใครมากที่สุด 💘</h1>
+<button id="rexBtn">Tyrannosaurus rex</button>
+
+<button id="fernBtn">
+นางสาวภิสรินธัณญ์ ทองล้วน ชื่อเล่นใบเฟิร์น<br>
+เกิด 16 พฤศจิกายน 2551 เวลา 04:55 น.<br>
+ชอบสีม่วง ขาว ดำ<br>
+ชอบกินชาบู หมูทะ ผัดไทย ผลไม้ ช็อกโกแลต ไอศกรีม<br>
+ไม่ชอบกินยา ไม่ชอบแกะกุ้งเอง
+</button>
+
+<div id="ans3"></div>
+</div>
+
+<div id="q4" style="display:none;">
+<h1>ใบเฟิร์นน่ารักไหม 💕</h1>
+<h1>⚠ โปรดระวังสัตว์ร้าย</h1>
+
+<label><input type="radio" name="cute" value="1"> ไม่น่ารัก</label>
+<label><input type="radio" name="cute" value="2"> เฉยๆ</label>
+<label><input type="radio" name="cute" value="3"> น่ารักมากๆๆๆๆ</label>
+<label><input type="radio" name="cute" value="4"> หน้าเหมือน T-Rex</label>
+
+<button onclick="checkQ4()">ตอบ</button>
+<div id="ans4"></div>
+</div>
+
+<div id="q5" style="display:none;">
+<h1>ใบเฟิร์นรักใครมากที่สุด 💖</h1>
+<button class="q5btn">Tyrannosaurus rex</button>
+<button class="q5btn">หิน 2 ก้อนหน้าบ้านเฟิร์น</button>
+<button class="q5btn">เปาบุ้นจิ้น</button>
+<button class="q5btn correct">เค้าแฟนใบเฟิร์น</button>
+<div id="ans5"></div>
+</div>
+
+</div>
+
+<div class="retry" id="retry">ตอบใหม่</div>
+<div class="dodo" id="dodo">🦤</div>
+
+<div id="finalBox" style="display:none;">
+<h1 style="font-size:60px;color:#ff9ecb;">Score 100M/5</h1>
+<div id="essay" style="width:70%;margin:auto;font-size:22px;line-height:1.8;margin-top:40px;position:relative;"></div>
+<audio id="bgMusic" src="mood.mp3"></audio>
+<a href="dodo1.html" class="backBtn">← 🦤</a>
+</div>
+
+<script>
+const loveBtn=document.getElementById("loveBtn");
+const noBtn=document.getElementById("noBtn");
+const result=document.getElementById("result");
+let size=20;
+
+/* ⭐ แก้แล้ว: ตอบถูกปุ่มกลับขนาดเดิม */
+loveBtn.onclick=()=>{
+    result.innerHTML='<div class="check">✔ รักเหมือนกัน 💖</div>';
+    size=20;
+    loveBtn.style.fontSize="18px";
+    document.getElementById("q2").style.display="block";
+};
+
+noBtn.onclick=()=>{
+    size+=10;
+    loveBtn.style.fontSize=size+"px";
+};
+
+function checkQ2(){
+    const choice=document.querySelector('input[name="love"]:checked');
+    if(!choice) return;
+
+    if(choice.value==="4"){
+        document.getElementById("ans2").innerHTML='<div class="check">✔ ถูกต้องที่สุด 💖</div>';
+        document.getElementById("q3").style.display="block";
+    }else{
+        const retry=document.getElementById("retry");
+        retry.style.display="block";
+        setTimeout(()=>{
+            retry.style.display="none";
+            document.querySelectorAll('input[name="love"]').forEach(el=>el.checked=false);
+        },1500);
+    }
+}
+
+rexBtn.onclick=()=> rexBtn.style.display="none";
+
+fernBtn.onclick=()=>{
+    document.getElementById("ans3").innerHTML='<div class="check">✔ ถูกต้องที่สุด 💘</div>';
+    rexBtn.style.display="inline-block";
+    document.getElementById("q4").style.display="block";
+};
+
+function checkQ4(){
+    const choice=document.querySelector('input[name="cute"]:checked');
+    if(!choice) return;
+
+    if(choice.value==="3"){
+        document.getElementById("ans4").innerHTML='<div class="check">✔ น่ารักสุดเลย 💕</div>';
+        document.getElementById("q5").style.display="block";
+    }else{
+        const dodo=document.getElementById("dodo");
+        dodo.style.display="block";
+        setTimeout(()=>{
+            dodo.style.display="none";
+            document.querySelectorAll('input[name="cute"]').forEach(el=>el.checked=false);
+        },1500);
+    }
+}
+
+const q5btns=document.querySelectorAll(".q5btn");
+
+q5btns.forEach(btn=>{
+    btn.onclick=()=>{
+        if(btn.classList.contains("correct")){
+            document.getElementById("ans5").innerHTML='<div class="check">✔ ถูกต้องที่สุด 💖</div>';
+            showFinal();
+        }else{
+            btn.style.display="none";
+            for(let i=0;i<20;i++){
+                const finger=document.createElement("div");
+                finger.innerHTML="🖕";
+                finger.className="middleFinger";
+                finger.style.top=Math.random()*90+"vh";
+                finger.style.left=Math.random()*90+"vw";
+                document.body.appendChild(finger);
+                setTimeout(()=>finger.remove(),1200);
+            }
+        }
+    };
+});
+
+const essayText=`วันนี้ผมเพิ่งค้นพบความจริงข้อหนึ่งว่า แฟนผมไม่ได้แค่น่ารักอย่างเดียว แต่ยังเก่งแบบแอบโกงธรรมชาติอีกต่างหาก เพราะเล่นเกมตอบคำถามทีเดียว ถูกครบทั้ง 5 ข้อแบบไม่มีสะดุด จนผมเริ่มสงสัยว่าแอบไปอ่านเฉลยมาหรือเปล่า… แต่ดูจากความมั่นใจแล้ว น่าจะเก่งจริงมากกว่า 😆 แฟนผมคนนี้เป็นสายครบเครื่องเลยนะ ทั้งแฟนดี แฟนเก่ง แฟนน่ารัก แถมยังสมองไวอีกต่างหาก อยู่ด้วยแล้วเหมือนได้ทั้งกำลังใจ ทั้งเสียงหัวเราะ และบางทีก็ได้ครูสอนการบ้านฟรีด้วย ความจริงผมไม่ได้ภูมิใจแค่เรื่องตอบเกมถูกหรอก แต่ภูมิใจที่มีแฟนคนนี้อยู่ข้าง ๆ มากกว่า คนที่ทั้งเก่ง ทั้งใจดี และทำให้ทุกวันธรรมดากลายเป็นวันพิเศษได้ง่าย ๆ แค่เห็นหน้าก็อารมณ์ดีแล้ว`;
+
+function showFinal(){
+    document.getElementById("finalBox").style.display="block";
+    const music=document.getElementById("bgMusic");
+    music.currentTime=0;
+    music.play();
+
+    const essayDiv=document.getElementById("essay");
+    let i=0;
+
+    const typing=setInterval(()=>{
+        essayDiv.innerHTML+=essayText[i];
+        i++;
+        if(i>=essayText.length){
+            clearInterval(typing);
+            essayDiv.classList.add("scrollUp");
+        }
+    },40);
+}
+</script>
+
+</body>
+</html>
